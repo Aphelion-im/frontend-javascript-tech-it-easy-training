@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+section {
+  border: 1px solid black;
+  padding: 2rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background-color: black;
+  bottom: -3px;
+  left: 0;
+}
+
+/* TV articles */
+article {
+  border: 1px solid black;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+/* Screensizes */
+.screensizes {
+  list-style-type: none;
+  display: flex;
+}
+
+.screensizes li::before {
+  content: '\a0'; /* Spatie */
+}
+
+.screensizes li:first-child::before {
+  content: '';
+}
+
+
+.screensizes li::after {
+  content: ' |';
+}
+
+.screensizes li:last-child::after {
+  content: '.';
+}
+
+
