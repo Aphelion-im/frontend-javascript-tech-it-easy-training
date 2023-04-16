@@ -1,40 +1,74 @@
 'use strict';
 
 window.addEventListener('load', () => {
-  console.log('Bonusopdracht gekoppeld');
 
   // Bonusopdracht 1
   const btnPrice = document.querySelector('.btn-price');
   const btnAmbilight = document.querySelector('.btn-ambilight');
   const btnSoldout = document.querySelector('.btn-soldout');
 
-  // Opdracht 1b naar functie
-  const showSoldOutTvs = () => {
-    const soldouttvs = inventory.filter((tv) => tv.originalStock === tv.sold);
-    console.log(soldouttvs);
-    return soldouttvs;
-  };
+  // Bonusopdracht 2
+  const btnPrice2 = document.querySelector('.btn-price-2');
+  const btnAmbilight2 = document.querySelector('.btn-ambilight-2');
+  const btnSoldout2 = document.querySelector('.btn-soldout-2');
+  const output5 = document.querySelector('.output5');
+
+  // Bonusopdrachten 
+  // Opdracht 1d naar functie
+  function sortTvs() {
+    const sortedTvs = inventory.sort((a, b) => a.price - b.price);
+    console.log('Bonusopdracht 1.1: ', "Sorted TV's:", sortedTvs);
+  }
 
   // Opdracht 1c naar functie
   const showAmbilightTvs = () => {
-    const ambilights = inventory.filter(
-      (tv) => tv.options.ambiLight === true
-    );
-    console.log(ambilights);
-    return ambilights;
+    const ambilights = inventory.filter((tv) => tv.options.ambiLight === true);
+    console.log('Bonusopdracht 1.2: ', "Ambilight TV's:", ambilights);
   };
 
-  // Opdracht 1d naar functie
-  const sortTvs = () => {
-    const sorted = inventory.sort((a, b) => a.price - b.price);
-    console.log(sorted);
-    return sorted;
+   // Opdracht 1b naar functie
+   const showSoldOutTvs = () => {
+    const soldouttvs = inventory.filter((tv) => tv.originalStock === tv.sold);
+    console.log('Bonusopdracht 1.3: ', "Sold out TV's: ", soldouttvs);
   };
+
+  // Bonusopdracht 2
+  // Output bij output5. Kopie van deze functie uit Opdracht-4.js
+  function showTvs(inventoryName) {
+    inventoryName.map((product) => {
+      const article = document.createElement('article');
+      const paragraph1 = document.createElement('p');
+      const paragraph2 = document.createElement('p');
+      const list = document.createElement('li');
+      paragraph1.textContent = tvFormat(product);
+      paragraph2.textContent = tvPriceFormat(product);
+      list.classList.add('screensizes');
+      list.textContent = showScreenSizes(product);
+      article.append(paragraph1, paragraph2, list);
+      output5.appendChild(article);
+    });
+  }
 
   // Event listeners
   btnPrice.addEventListener('click', sortTvs);
   btnAmbilight.addEventListener('click', showAmbilightTvs);
   btnSoldout.addEventListener('click', showSoldOutTvs);
 
-  // Bonusopdracht 2, voor nu, te moeilijk
+  btnPrice2.addEventListener('click', () => {
+    output5.replaceChildren(); // Remove previous elements before appending new ones
+    const sortedTvs = inventory.sort((a, b) => a.price - b.price);
+    showTvs(sortedTvs);
+  });
+
+  btnAmbilight2.addEventListener('click', () => {
+    output5.replaceChildren(); // Or with innerHTML = ''; textContent = '';
+    const ambilights = inventory.filter((tv) => tv.options.ambiLight === true);
+    showTvs(ambilights);
+  });
+
+  btnSoldout2.addEventListener('click', () => {
+    output5.replaceChildren();
+    const soldouttvs = inventory.filter((tv) => tv.originalStock === tv.sold);
+    showTvs(soldouttvs);
+  });
 }); // End load event listener

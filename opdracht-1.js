@@ -1,25 +1,25 @@
 'use strict';
 
 window.addEventListener('load', () => {
-  console.log('Opdracht 1 gekoppeld');
 
   // Opdracht 1 - Array Methoden
   // Opdracht 1a
   const types = inventory.map((type) => type.type);
-  console.log(types);
+  console.log('Opdracht 1a:', types);
 
   // Opdracht 1b
   const tvSoldOut = inventory.filter((tv) => tv.originalStock === tv.sold);
-  console.log(tvSoldOut);
+  console.log('Opdracht 1b: ', tvSoldOut);
 
   // Opdracht 1c
   const tvAmbilight = inventory.filter((tv) => tv.options.ambiLight === true);
-  console.log(tvAmbilight);
+  console.log('Opdracht 1c: ', tvAmbilight);
 
   // Opdracht 1d
   const sortedTvs = inventory.sort((a, b) => a.price - b.price);
-  console.log(sortedTvs);
+  console.log('Opdracht 1d: ', sortedTvs);
 }); // End load event listener
+
 
 /*
 Opdracht 1 - Array Methoden

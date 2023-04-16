@@ -1,7 +1,6 @@
 'use strict';
 
 window.addEventListener('load', () => {
-  console.log('Opdracht 2 gekoppeld');
 
   // Opdracht 2 - Elementen in de DOM plaatsen
   // opdracht 2a
@@ -11,7 +10,7 @@ window.addEventListener('load', () => {
     return tvsSold;
   });
 
-  console.log(`Aantal TV's verkocht: ${tvsSold}.`);
+  console.log('Opdracht 2a: ', `Aantal TV's verkocht: ${tvsSold}.`);
 
 // Opdracht 2b
 const output2b = document.querySelector(".output2b");
@@ -25,7 +24,7 @@ inventory.filter(function (tvsbought) {
   return tvsBought;
 });
 
-console.log(`Aantal TV's ingekocht: ${tvsBought}.`);
+console.log('Opdracht 2c: ', `Aantal TV's ingekocht: ${tvsBought}.`);
 
 
 // Opdracht 2d

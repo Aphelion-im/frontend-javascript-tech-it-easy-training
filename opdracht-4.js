@@ -1,11 +1,10 @@
 'use strict';
 
-window.addEventListener('load', () => {
-  console.log('Opdracht 4 gekoppeld');
-
   // Opdracht 4
   const output4 = document.querySelector('.output4');
+  const output4e = document.querySelector('.output4e');
 
+  // Opdracht 4a
   function tvFormat(arrayIndex) {
     const brandTv = arrayIndex.brand;
     const typeTv = arrayIndex.type;
@@ -13,21 +12,29 @@ window.addEventListener('load', () => {
     return `${brandTv} ${typeTv} - ${nameTv}`;
   }
 
+  // Opdracht 4b
   function tvPriceFormat(arrayIndex) {
     const price = arrayIndex.price;
     return `€${price}`;
   }
 
+  // Opdracht 4c
   function showScreenSizes(arrayIndex) {
     let outputSizes = '';
     for (let i = 0; i < arrayIndex.availableSizes.length; i++) {
       const sizeInch = arrayIndex.availableSizes[i]; // Inches
       const sizeCm = (arrayIndex.availableSizes[i] * 2.54).toFixed(0); // Centimeters
-      outputSizes = outputSizes + `<li>${sizeInch} inch (${sizeCm}) cm</li>`;
+
+      if (i === arrayIndex.availableSizes.length - 1) { // Country information part 2 opdracht
+        return outputSizes += `${sizeInch} inch (${sizeCm} cm)`;
+      } else {
+        outputSizes += `${sizeInch} inch (${sizeCm} cm) | `;
+      }
     }
     return outputSizes;
   }
 
+  // Opdracht 4d
   function createCards(inventoryName) {
     let finalOutput = '';
     for (let i = 0; i < inventoryName.length; i++) {
@@ -45,4 +52,23 @@ window.addEventListener('load', () => {
   }
 
   output4.innerHTML = createCards(inventory);
-}); // End load event listener
+
+  // Opdracht 4e
+  // Output 4e
+  function showTvs(inventoryName) {
+    inventoryName.map((product) => {
+      const article = document.createElement('article');
+      const paragraph1 = document.createElement('p');
+      const paragraph2 = document.createElement('p');
+      const list = document.createElement('li');
+      paragraph1.textContent = tvFormat(product);
+      paragraph2.textContent = tvPriceFormat(product);
+      list.classList.add('screensizes');
+      list.textContent = showScreenSizes(product);
+      article.append(paragraph1, paragraph2, list);
+      output4e.appendChild(article);
+    });
+  }
+
+  showTvs(inventory);
+

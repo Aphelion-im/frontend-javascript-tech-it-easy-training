@@ -1,7 +1,6 @@
 'use strict';
 
 window.addEventListener('load', () => {
-  console.log('Opdracht 3 gekoppeld');
 
   // Opdracht 3 - Array methoden en functies
   // Opdracht 3a
