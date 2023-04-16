@@ -1,7 +1,6 @@
 'use strict';
 
 window.addEventListener('load', () => {
-
   // Bonusopdracht 1
   const btnPrice = document.querySelector('.btn-price');
   const btnAmbilight = document.querySelector('.btn-ambilight');
@@ -13,23 +12,20 @@ window.addEventListener('load', () => {
   const btnSoldout2 = document.querySelector('.btn-soldout-2');
   const output5 = document.querySelector('.output5');
 
-  // Bonusopdrachten 
+  // Bonusopdrachten
   // Opdracht 1d naar functie
-  function sortTvs() {
-    const sortedTvs = inventory.sort((a, b) => a.price - b.price);
-    console.log('Bonusopdracht 1.1: ', "Sorted TV's:", sortedTvs);
-  }
+  const sortTvs = () => {
+    return inventory.sort((a, b) => a.price - b.price);
+  };
 
   // Opdracht 1c naar functie
   const showAmbilightTvs = () => {
-    const ambilights = inventory.filter((tv) => tv.options.ambiLight === true);
-    console.log('Bonusopdracht 1.2: ', "Ambilight TV's:", ambilights);
+    return inventory.filter((tv) => tv.options.ambiLight === true);
   };
 
-   // Opdracht 1b naar functie
-   const showSoldOutTvs = () => {
-    const soldouttvs = inventory.filter((tv) => tv.originalStock === tv.sold);
-    console.log('Bonusopdracht 1.3: ', "Sold out TV's: ", soldouttvs);
+  // Opdracht 1b naar functie
+  const showSoldOutTvs = () => {
+    return inventory.filter((tv) => tv.originalStock === tv.sold);
   };
 
   // Bonusopdracht 2
@@ -50,25 +46,30 @@ window.addEventListener('load', () => {
   }
 
   // Event listeners
-  btnPrice.addEventListener('click', sortTvs);
-  btnAmbilight.addEventListener('click', showAmbilightTvs);
-  btnSoldout.addEventListener('click', showSoldOutTvs);
+  btnPrice.addEventListener('click', () => {
+    console.log('Bonusopdracht 1.1: ', "Sorted TV's:", sortTvs());
+  });
+
+  btnAmbilight.addEventListener('click', () => {
+    console.log('Bonusopdracht 1.2: ', "Ambilight TV's:", showAmbilightTvs());
+  });
+
+  btnSoldout.addEventListener('click', () => {
+    console.log('Bonusopdracht 1.3: ', "Sold out TV's: ", showSoldOutTvs());
+  });
 
   btnPrice2.addEventListener('click', () => {
     output5.replaceChildren(); // Remove previous elements before appending new ones
-    const sortedTvs = inventory.sort((a, b) => a.price - b.price);
-    showTvs(sortedTvs);
+    showTvs(sortTvs());
   });
 
   btnAmbilight2.addEventListener('click', () => {
     output5.replaceChildren(); // Or with innerHTML = ''; textContent = '';
-    const ambilights = inventory.filter((tv) => tv.options.ambiLight === true);
-    showTvs(ambilights);
+    showTvs(showAmbilightTvs());
   });
 
   btnSoldout2.addEventListener('click', () => {
     output5.replaceChildren();
-    const soldouttvs = inventory.filter((tv) => tv.originalStock === tv.sold);
-    showTvs(soldouttvs);
+    showTvs(showSoldOutTvs());
   });
 }); // End load event listener
