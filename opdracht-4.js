@@ -24,11 +24,10 @@
     for (let i = 0; i < arrayIndex.availableSizes.length; i++) {
       const sizeInch = arrayIndex.availableSizes[i]; // Inches
       const sizeCm = (arrayIndex.availableSizes[i] * 2.54).toFixed(0); // Centimeters
-
-      if (i === arrayIndex.availableSizes.length - 1) { // Country information part 2 opdracht
-        return outputSizes += `${sizeInch} inch (${sizeCm} cm)`;
-      } else {
-        outputSizes += `${sizeInch} inch (${sizeCm} cm) | `;
+      outputSizes += `${sizeInch} inch (${sizeCm} cm)`;
+      
+      if (i < arrayIndex.availableSizes.length - 1) { // Country information part 2 opdracht
+        outputSizes += " | ";
       }
     }
     return outputSizes;
