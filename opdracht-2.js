@@ -6,7 +6,7 @@ window.addEventListener('load', () => {
   // opdracht 2a
   let tvsSold = 0;
   inventory.filter(function (tvsold) {
-    tvsSold = tvsSold + tvsold.sold;
+    tvsSold += tvsold.sold;
     return tvsSold;
   });
 
