@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
 
   // Opdracht 1c naar functie
   const showAmbilightTvs = () => {
-    return inventory.filter((tv) => tv.options.ambiLight === true);
+    return inventory.filter(tv => tv.options.ambiLight);
   };
 
   // Opdracht 1b naar functie
